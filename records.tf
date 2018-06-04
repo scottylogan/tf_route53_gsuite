@@ -2,6 +2,14 @@ resource "aws_route53_zone" "main" {
   name = "${var.domain}"
 }
 
+output "zone_id" {
+  value = "${aws_route53_zone.main.zone_id}"
+}
+
+output "name_servers" {
+  value = "${aws_route53_zone.main.name_servers}"
+}
+
 resource "aws_route53_record" "ns" {
   zone_id = "${aws_route53_zone.main.zone_id}"
   name    = "${var.domain}"
