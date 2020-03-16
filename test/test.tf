@@ -1,5 +1,5 @@
 module "dns" {
-  source        = ".."
+  source        = "./.."
   domain        = "example.com"
   site_verifier = "12345"
   dkim          = "MIG..."
