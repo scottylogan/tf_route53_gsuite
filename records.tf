@@ -63,14 +63,5 @@ resource "aws_route53_record" "mx" {
   name    = var.domain
   type    = "MX"
   ttl     = var.ttl
-
-  records = [
-    "10 ASPMX.L.GOOGLE.COM.",
-    "30 ASPMX5.GOOGLEMAIL.COM.",
-    "30 ASPMX4.GOOGLEMAIL.COM.",
-    "30 ASPMX3.GOOGLEMAIL.COM.",
-    "30 ASPMX2.GOOGLEMAIL.COM.",
-    "20 ALT2.ASPMX.L.GOOGLE.COM.",
-    "20 ALT1.ASPMX.L.GOOGLE.COM.",
-  ]
+  records = var.mx
 }
