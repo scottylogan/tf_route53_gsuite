@@ -96,8 +96,6 @@ Terraform will perform the following actions:
       + id            = (known after apply)
       + name          = "example.com"
       + name_servers  = (known after apply)
-      + vpc_id        = (known after apply)
-      + vpc_region    = (known after apply)
       + zone_id       = (known after apply)
     }
 
