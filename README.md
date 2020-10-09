@@ -45,6 +45,10 @@ Defines the DNS NS record TTL (in seconds). Defaults to _86400_ (24 hours).
 
 The value for the `google-site-verifier` TXT record. If no value is specified, no `google-site-verifier` TXT entry will be created.
 
+### mx
+
+The set of MX hosts for the domain. Defaults to the Google MX servers.
+
 ### spf
 
 The value for the SPF record. This will also be used to create a TXT record. Default is _"v=spf1 include:_spf.google.com ~all"_.
