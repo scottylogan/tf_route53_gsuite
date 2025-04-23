@@ -9,14 +9,6 @@ resource "aws_route53_zone" "main" {
   }
 }
 
-output "zone_id" {
-  value = aws_route53_zone.main.zone_id
-}
-
-output "name_servers" {
-  value = aws_route53_zone.main.name_servers
-}
-
 resource "aws_route53_record" "ns" {
   zone_id = aws_route53_zone.main.zone_id
   name    = var.domain
@@ -61,6 +53,7 @@ resource "aws_route53_record" "google_dkim" {
 }
 
 resource "aws_route53_record" "mx" {
+  count   = length(var.mx) == 0 ? 0 : 1
   zone_id = aws_route53_zone.main.zone_id
   name    = var.domain
   type    = "MX"

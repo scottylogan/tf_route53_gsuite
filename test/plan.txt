@@ -19,7 +19,7 @@ OpenTofu will perform the following actions:
       + zone_id         = (known after apply)
     }
 
-  # module.dns.aws_route53_record.mx will be created
+  # module.dns.aws_route53_record.mx[0] will be created
   + resource "aws_route53_record" "mx" {
       + allow_overwrite = (known after apply)
       + fqdn            = (known after apply)
