@@ -27,7 +27,7 @@ resource "aws_route53_record" "ns" {
 }
 
 locals {
-  ver = var.site_verifier == "" ? "" : format("google-site-verification=%s", var.site_verifier)
+  ver = var.site_verifier == "" ? [] : [ format("google-site-verification=%s", var.site_verifier) ]
 }
 
 resource "aws_route53_record" "txt" {
@@ -36,7 +36,7 @@ resource "aws_route53_record" "txt" {
   type    = "TXT"
   ttl     = var.ttl
 
-  records = concat([ var.spf, local.ver ], var.extra_txts)
+  records = concat([ var.spf ], local.ver, var.extra_txts)
 }
 
 resource "aws_route53_record" "spf" {

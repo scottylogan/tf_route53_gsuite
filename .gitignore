@@ -2,3 +2,4 @@
 test/provider.tf
 test/test.out
 test/test.diff
+test/.terraform.lock.hcl
