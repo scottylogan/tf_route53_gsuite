@@ -53,12 +53,3 @@ variable "extra_txts" {
   default     = []
 }
 
-data "template_file" "txt_list" {
-  template = "${var.spf},$${_extra},$${_ver}"
-
-  vars = {
-    _ver   = var.site_verifier == "" ? "" : format("google-site-verification=%s", var.site_verifier)
-    _extra = join(",", var.extra_txts)
-  }
-}
-

@@ -26,13 +26,17 @@ resource "aws_route53_record" "ns" {
   records = aws_route53_zone.main.name_servers
 }
 
+locals {
+  ver = var.site_verifier == "" ? "" : format("google-site-verification=%s", var.site_verifier)
+}
+
 resource "aws_route53_record" "txt" {
   zone_id = aws_route53_zone.main.zone_id
   name    = var.domain
   type    = "TXT"
   ttl     = var.ttl
 
-  records = compact(split(",", data.template_file.txt_list.rendered))
+  records = concat([ var.spf, local.ver ], var.extra_txts)
 }
 
 resource "aws_route53_record" "spf" {
@@ -41,9 +45,7 @@ resource "aws_route53_record" "spf" {
   type    = "SPF"
   ttl     = var.ttl
 
-  records = [
-    var.spf,
-  ]
+  records = [ var.spf ]
 }
 
 resource "aws_route53_record" "google_dkim" {
